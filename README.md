@@ -1,6 +1,6 @@
 # There's an Issue for That™
 
-This website redirects users to a relevant GitHub issue using the format:
+This is the code for the website [www.theresanissueforthat.com](https://www.theresanissueforthat.com/index.html). The website redirects users to a relevant GitHub issue using the format:
 
     www.theresanissueforthat.com/[namespace]/[project]/[issue number]
 
