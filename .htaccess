@@ -7,16 +7,11 @@ RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]
 # Redirect index page to root.
 RewriteRule ^index\.html$ / [NC,R,L]
 
-# Rewrite requests with .html.
-RewriteCond %{THE_REQUEST} \ /(.*)\.html($|\ )
-RewriteRule ^ /%1 [L,R=301]
-RewriteCond %{REQUEST_FILENAME}.html -f
-RewriteRule !.*\.html$ %{REQUEST_FILENAME}.html [L]
-
 # Disallow access to .git directory.
 RedirectMatch 404 /\.git
 
 # Redirect any other request to GitHub.
 # Example: https://github.com/geerlingguy/jeffgeerling-com/issues/16
-RewriteCond %{REQUEST_URI} %{REQUEST_URI} !\.(html|htm|aspx|asp|jpg|jpeg|png|css|js|php)$
-RewriteRule ^(.*)$ https://github.com [R=301,L]
+RewriteCond %{REQUEST_URI} !^/$
+RewriteCond %{REQUEST_URI} !\.(html|htm|aspx|asp|jpg|jpeg|png|css|js|php)$
+RewriteRule ^(.*)$ https://github.com/$1 [R=301,L]
